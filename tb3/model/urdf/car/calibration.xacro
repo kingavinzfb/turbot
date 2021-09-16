@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+ 
+ <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+
+	<!--base_link-->
+	<link name = "base_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.0001" radius = "0.0001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.0001" radius = "0.0001"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="0" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
+		</inertial>
+	</link>
+
+	<link name = "mark1_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
+		</inertial>
+	</link>
+   
+	<link name = "mark2_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
+		</inertial>
+	</link>
+
+	<joint name = "mark1_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark1_link"/>
+		<origin xyz = "-6 6 0" rpy = "0 0 0"/>
+	</joint>
+
+	<joint name = "mark2_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark2_link"/>
+		<origin xyz = "6 -6 0" rpy = "0 0 0"/>
+	</joint>
+
+  
+  <gazebo reference="mark2_link">
+     <material>Gazebo/Black</material>
+  </gazebo>
+  <!--gazebo reference="mark1_link">
+     <material>Gazebo/White</material>
+  </gazebo-->
+  
+  <!--gazebo reference="base_link">
+     <material>Gazebo/</material>
+  </gazebo-->
+</robot>
+

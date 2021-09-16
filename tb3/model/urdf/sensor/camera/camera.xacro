@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+ 
+ <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+
+	<!--base_link-->
+	<link name = "base_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.1"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.1"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+
+	<link name = "mark1_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+   
+	<link name = "mark2_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+	
+	<link name = "mark3_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+	
+	<link name = "mark4_link">	
+		<collision>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin xyz = "0 0 0" rpy = "0 0 0"/>
+			<geometry>
+				<cylinder length = "0.01" radius = "0.2"/>
+			</geometry>	
+		</visual>
+	
+		<inertial>
+       	  <mass value="100" />
+       	  <origin xyz="0 0 0" rpy="0 0 0"/>
+      	  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+  
+   <!-- Camera -->
+   <link name="camera_link">
+     <collision>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+     <box size="0.05 0.05 0.05"/>
+       </geometry>
+     </collision>
+ 
+     <visual>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+     <box size="0.05 0.05 0.05"/>
+       </geometry>
+       <material name="red">
+     <color rgba="1 0 0 1"/>
+       </material>
+     </visual>
+ 
+     <inertial>
+       <mass value="1e-5" />
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+     </inertial>
+   </link>
+
+	<joint name = "mark1_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark1_link"/>
+		<origin xyz = "-3.5 12 0" rpy = "0 0 0"/>
+	</joint>
+
+	<joint name = "mark2_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark2_link"/>
+		<origin xyz = "3.5 12 0" rpy = "0 0 0"/>
+	</joint>
+
+	<joint name = "mark3_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark3_link"/>
+		<origin xyz = "-3.5 5 0" rpy = "0 0 0"/>
+	</joint>
+
+	<joint name = "mark4_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "mark4_link"/>
+		<origin xyz = "3.5 5 0" rpy = "0 0 0"/>
+	</joint>
+
+	<joint name = "camera_to_base" type = "fixed">
+		<parent link = "base_link"/>
+		<child link = "camera_link"/>
+		<origin xyz = "0 0 4.525" rpy = "0 1.0 1.57075"/>
+	</joint>
+
+  <gazebo reference="camera_link">
+     <material>Gazebo/Red</material>
+  </gazebo>
+  
+  <gazebo reference="mark3_link">
+     <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="mark4_link">
+     <material>Gazebo/Black</material>
+  </gazebo>
+  
+  <gazebo reference="base_link">
+     <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference = "camera_link">
+     <sensor type="camera" name="camera1">
+       <update_rate>30.0</update_rate>
+       <camera name="head">
+         <horizontal_fov>1.3962634</horizontal_fov>
+         <image>
+           <width>800</width>
+           <height>800</height>
+           <format>R8G8B8</format>
+         </image>
+         <clip>
+           <near>0.02</near>
+           <far>300</far>
+         </clip>
+         <noise>
+           <type>gaussian</type>
+           <mean>0.0</mean>
+            <stddev>0.007</stddev>
+         </noise>
+       </camera>
+ 
+       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+         <alwaysOn>true</alwaysOn>
+         <updateRate>0.0</updateRate>
+         <cameraName>camera</cameraName>
+         <imageTopicName>image_raw</imageTopicName>
+         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+         <frameName>camera_link</frameName>
+         <hackBaseline>0.07</hackBaseline>
+         <distortionK1>0.0</distortionK1>
+         <distortionK2>0.0</distortionK2>
+         <distortionK3>0.0</distortionK3>
+         <distortionT1>0.0</distortionT1>
+         <distortionT2>0.0</distortionT2>
+       </plugin>
+      </sensor>
+	</gazebo>
+
+</robot>
